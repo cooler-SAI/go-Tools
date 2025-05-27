@@ -7,11 +7,11 @@ import (
 	"github.com/rs/zerolog/log" // Import the global zerolog.Logger instance
 )
 
-// ConfigureConsoleWriter sets up the global zerolog logger
+// ConfigureZerologConsoleWriter sets up the global zerolog logger
 // to output to the console (stderr) in a human-readable format.
 //
 // You should call this function once at the beginning of your main application.
-func ConfigureConsoleWriter() {
+func ConfigureZerologConsoleWriter() {
 	// Set the global logging level (e.g., zl.InfoLevel).
 	// This can be changed to zl.DebugLevel for more verbose logs during development.
 	zl.SetGlobalLevel(zl.InfoLevel)
