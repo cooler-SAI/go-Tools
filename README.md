@@ -24,3 +24,21 @@ import (
     // ... other imports
     "github.com/cooler-SAI/go-Tools/stoper" // Import the stoper package
 )
+```
+
+---
+
+### `zerolog` - Structured, Leveled Logging
+
+The `zerolog` package provides a fast and flexible logger that produces structured (JSON by default) and leveled logs. It's designed for high performance and offers a simple API for rich logging capabilities.
+
+#### Installation
+
+To include `zerolog` in your project, you'll first need to get the package:
+```go
+import (
+    "fmt"
+    // ... other imports
+    "github.com/cooler-SAI/go-Tools/zerolog" // Import the zerolog package
+)
+```
