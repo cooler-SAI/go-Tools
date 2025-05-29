@@ -24,4 +24,5 @@ func ConfigureZerologConsoleWriter() {
 	// zl.TimeFieldFormat = zl.TimeFormatUnix
 	// Or a more human-readable format:
 	// zl.TimeFieldFormat = "2006-01-02 15:04:05" // Example RFC3339 without milliseconds
+
 }
