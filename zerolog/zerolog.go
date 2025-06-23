@@ -5,10 +5,10 @@ import (
 	"os"
 )
 
-var Logger = zerolog.New(os.Stderr).With().Timestamp().Logger()
+var Log zerolog.Logger = zerolog.New(os.Stderr).With().Timestamp().Logger()
 
-func ConfigureZerologConsoleWriter() {
-	Logger = zerolog.New(zerolog.ConsoleWriter{
+func InitConsoleLogger() {
+	Log = zerolog.New(zerolog.ConsoleWriter{
 		Out:        os.Stderr,
 		TimeFormat: "2006-01-02 15:04:05",
 	}).With().Timestamp().Logger()
