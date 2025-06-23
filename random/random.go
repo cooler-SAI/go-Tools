@@ -1,4 +1,3 @@
-// Package random provides utility functions for generating random values.
 package random
 
 import "math/rand/v2"
