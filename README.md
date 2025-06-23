@@ -42,6 +42,7 @@ import (
     "github.com/cooler-SAI/go-Tools/zerolog" // Import the zerolog package
 )
 ```
+---
 
 ### `Dockerfile` - Docker Support
 
@@ -65,4 +66,43 @@ To build a Docker image for your Go project using this Dockerfile:
 1.  Ensure your Go project is structured such that the `docker/` directory (containing the `Dockerfile`) is a subdirectory of your main project.
 2.  Navigate to the `docker/` directory in your terminal.
 3.  Run the Docker build command or use config in your IDE
-    
+
+---
+
+### `random` - Random Value Generation
+
+Utility functions for generating random values using math/rand/v2.
+
+#### Installation
+
+To include `random` in your project, you'll first need to get the package:
+```go
+import (
+    "fmt"
+    // ... other imports
+    "github.com/cooler-SAI/go-Tools/random" // Import the zerolog package
+)
+```
+### How to Use
+
+To use any tool from this repository, you'll need to import it into your Go project and then run `go mod tidy`.
+
+```go
+// Returns random int in [min, max] range
+num := random.RandRange(1, 100)
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
