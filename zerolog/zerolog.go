@@ -1,18 +1,15 @@
 package zerolog
 
 import (
-	zl "github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
+	"github.com/rs/zerolog"
 	"os"
 )
 
-// Logger is the global logger instance
-var Logger = log.Logger
+var Logger = zerolog.New(os.Stderr).With().Timestamp().Logger()
 
-// ConfigureZerologConsoleWriter sets up the global zerolog logger
 func ConfigureZerologConsoleWriter() {
-	zl.SetGlobalLevel(zl.InfoLevel)
-	zl.TimeFieldFormat = "2006-01-02 15:04:05"
-	log.Logger = zl.New(zl.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger()
-	Logger = log.Logger // Update our exported logger
+	Logger = zerolog.New(zerolog.ConsoleWriter{
+		Out:        os.Stderr,
+		TimeFormat: "2006-01-02 15:04:05",
+	}).With().Timestamp().Logger()
 }
