@@ -186,7 +186,11 @@ Process finished with exit code 0
 ```
 
 ### Go Benchmark Test
+
+```go
 go test -bench=Benchmark -benchmem -run=^$ -v
+```
+
 ---
 
 
