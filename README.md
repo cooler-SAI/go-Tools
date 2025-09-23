@@ -42,6 +42,23 @@ import (
     "github.com/cooler-SAI/go-Tools/zerolog" // Import the zerolog package
 )
 ```
+
+#### Use
+Just use this code in your project:
+
+```go
+// Using the logger with default settings (text output)
+zerolog.Log.Info().Msg("This is a message with default settings")
+
+// Initialize with colored console output
+zerolog.Init()
+
+// Now logs will be in colored format
+zerolog.Log.Info().Msg("This is an informational message")
+zerolog.Log.Warn().Msg("This is a warning")
+zerolog.Log.Error().Msg("This is an error")
+```
+
 ---
 
 ### `Dockerfile` - Docker Support
@@ -167,6 +184,13 @@ Build successfully deleted.
 
 Process finished with exit code 0
 ```
+
+### Go Benchmark Test
+
+```go
+go test -bench=Benchmark -benchmem -run=^$ -v
+```
+
 ---
 
 
