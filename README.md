@@ -20,9 +20,9 @@ To include `stoper` in your project, simply import it:
 
 ```go
 import (
-    "fmt"
-    // ... other imports
-    "github.com/cooler-SAI/go-Tools/stoper" // Import the stoper package
+"fmt"
+// ... other imports
+"github.com/cooler-SAI/go-Tools/stoper" // Import the stoper package
 )
 ```
 
@@ -37,9 +37,9 @@ The `zerolog` package provides a fast and flexible logger that produces structur
 To include `zerolog` in your project, you'll first need to get the package:
 ```go
 import (
-    "fmt"
-    // ... other imports
-    "github.com/cooler-SAI/go-Tools/zerolog" // Import the zerolog package
+"fmt"
+// ... other imports
+"github.com/cooler-SAI/go-Tools/zerolog" // Import the zerolog package
 )
 ```
 
@@ -70,9 +70,9 @@ This repository now includes a `Dockerfile` located in the `docker/` directory. 
 *   **Multi-stage Builds:** Utilizes a builder stage for compilation and a separate, minimal runtime stage (`alpine` based) to keep the final image size small.
 *   **Security Focused:** Creates a non-root user (`appuser`) to run the application, enhancing security.
 *   **Optimized for Go:**
-    *   Disables CGO by default (`CGO_ENABLED=0`) for static binaries.
-    *   Targets Linux (`GOOS=linux`).
-    *   Strips debugging symbols (`-ldflags="-s -w"`) to reduce binary size.
+*   Disables CGO by default (`CGO_ENABLED=0`) for static binaries.
+*   Targets Linux (`GOOS=linux`).
+*   Strips debugging symbols (`-ldflags="-s -w"`) to reduce binary size.
 *   **Dependency Caching:** Leverages Docker's layer caching for Go module dependencies to speed up subsequent builds.
 *   **Configurable:** Designed to build a Go project located in the parent directory relative to the `docker/` directory (i.e., your main Go project should be one level up from where the `Dockerfile` resides).
 
@@ -95,9 +95,9 @@ Utility functions for generating random values using math/rand/v2.
 To include `random` in your project, you'll first need to get the package:
 ```go
 import (
-    "fmt"
-    // ... other imports
-    "github.com/cooler-SAI/go-Tools/random" // Import the zerolog package
+"fmt"
+// ... other imports
+"github.com/cooler-SAI/go-Tools/random" // Import the zerolog package
 )
 ```
 ### How to Use
@@ -136,26 +136,26 @@ Important Notes for the BAT file:
 Now, you need to configure GoLand to use this BAT file to control the build and run process.
 
 1. Open Run/Debug Configurations:
-   Go to Run | Edit Configurations... in the top menu of GoLand.
+Go to Run | Edit Configurations... in the top menu of GoLand.
 
 2. Select or Create a Configuration:
-   Choose your existing "Go Build" or "Go Application" configuration for your project (e.g., postgres or transactions). If you don't have one, create a new one.
+Choose your existing "Go Build" or "Go Application" configuration for your project (e.g., postgres or transactions). If you don't have one, create a new one.
 
 3. Configure the "Before launch" section:
 
-   REMOVE the default "Build" (Go Build) step:
-   In the "Before launch" list, find the step of type "Build" (Go Build). Select it and click the minus (-) button to remove it. This is crucial, as the build will now be handled by your BAT file.
+REMOVE the default "Build" (Go Build) step:
+In the "Before launch" list, find the step of type "Build" (Go Build). Select it and click the minus (-) button to remove it. This is crucial, as the build will now be handled by your BAT file.
 
 4. Add your "External Tool":
-   Click the plus (+) button and select Run External Tool. If you haven't configured this tool before, click + again to create a new one. Fill in the fields for the new external tool as follows:
-      * Name: Run and Clean Build (or any descriptive name)
-      * Program: Provide the full, absolute path to your build_and_run.bat file.
-      * Example: D:\Enterprise Development\Go-projects\go-projects\base\postgres\build_and_run.bat
-      * Arguments: Leave this field BLANK. The BAT file handles the paths internally and does not require arguments from GoLand.
-      * Working directory: $ProjectFileDir$ (This macro points to the root directory of your Go project, e.g., D:\Enterprise Development\Go-projects\go-projects\base).
+Click the plus (+) button and select Run External Tool. If you haven't configured this tool before, click + again to create a new one. Fill in the fields for the new external tool as follows:
+* Name: Run and Clean Build (or any descriptive name)
+* Program: Provide the full, absolute path to your build_and_run.bat file.
+* Example: D:\Enterprise Development\Go-projects\go-projects\base\postgres\build_and_run.bat
+* Arguments: Leave this field BLANK. The BAT file handles the paths internally and does not require arguments from GoLand.
+* Working directory: $ProjectFileDir$ (This macro points to the root directory of your Go project, e.g., D:\Enterprise Development\Go-projects\go-projects\base).
 
 5. Apply Changes:
-   Click OK to save the new external tool. Ensure that Run and Clean Build is now the only step listed in the "Before launch" section (apart from potentially "Build dependencies" or similar steps GoLand adds by default). Click Apply, then OK in the "Run/Debug Configurations" window to save all changes.
+Click OK to save the new external tool. Ensure that Run and Clean Build is now the only step listed in the "Before launch" section (apart from potentially "Build dependencies" or similar steps GoLand adds by default). Click Apply, then OK in the "Run/Debug Configurations" window to save all changes.
 
 ### How to Use
 
@@ -192,6 +192,44 @@ go test -bench=Benchmark -benchmem -run=^$ -v
 ```
 
 ---
+
+### `tests` - CPU and Memory tests
+
+This section provides a set of benchmark tests to evaluate the performance of various operations in Go, including string concatenation, integer addition, and slice appending. The benchmarks measure both execution time and memory allocations. Using pprof, you can analyze CPU and memory usage to identify performance bottlenecks.
+
+### Benchmark Tests
+
+1. For Web Testing:
+
+```go
+# 1. Replace functions in pprof-web-template.go with your own
+# 2. Run:
+go run pprof-web-template.go
+
+# 3. Open in browser:
+#    - http://localhost:8080/ - instructions
+#    - http://localhost:8080/debug/pprof/ - profiling
+```
+
+2. For Local Testing:
+```go
+# 1. Replace functions in pprof-local-template.go with your own
+# 2. Run:
+go run pprof-local-template.go
+
+# 3. Analyze created .pprof files:
+go tool pprof cpu.pprof
+go tool pprof memory.pprof
+```
+
+3. For Running Tests:
+```go
+go test -v -cpuprofile=cpu.test.pprof -memprofile=memory.test.pprof
+```
+
+
+
+
 
 
 
