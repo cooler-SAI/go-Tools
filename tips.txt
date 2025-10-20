@@ -1,0 +1,14 @@
+
+-- MySQL dump 10.13  Distrib 8.0.26, for Linux (x86_64)
+--
+-- Host: localhost    Database: tips
+-- ------------------------------------------------------
+
+# CREATE FOLDER TO STORE MYSQLDUMP
+mkdir C:\mysql-tools
+
+# Copy mysqldump from Docker container to your local machine
+docker cp mysql-local:/usr/bin/mysqldump C:\mysql-tools\mysqldump.exe
+
+# Check if mysqldump.exe is copied successfully
+dir C:\mysql-tools\mysqldump.exe

@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>allocs</w>
+      <w>distrib</w>
       <w>errorlevel</w>
       <w>pushd</w>
       <w>setlocal</w>
